@@ -7,5 +7,5 @@ spec:
     app: todo-api
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: {{ .Values.containerPort }}
+      targetPort: {{ .Values.containerPort }}

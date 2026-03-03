@@ -5,7 +5,7 @@ metadata:
   labels:
     app: todo-api
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: todo-api
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo-api
-        image: 060476966476.dkr.ecr.eu-west-2.amazonaws.com/todo-api:e0a64f75803c99970ac58b658626c45b3263a3d2
+        image: {{ .Values.image.repository}}:{{ .Values.image.tag }}
         ports:
-        - containerPort: 8000
+        - containerPort: {{ .Values.containerPort }}
