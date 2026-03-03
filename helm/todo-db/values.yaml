@@ -1,0 +1,4 @@
+auth:
+  username: todo
+  password: changeme
+  database: todo-db
