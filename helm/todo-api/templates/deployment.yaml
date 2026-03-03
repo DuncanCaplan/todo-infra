@@ -19,3 +19,15 @@ spec:
         image: {{ .Values.image.repository}}:{{ .Values.image.tag }}
         ports:
         - containerPort: {{ .Values.containerPort }}
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
