@@ -19,6 +19,9 @@ spec:
         image: {{ .Values.image.repository}}:{{ .Values.image.tag }}
         ports:
         - containerPort: {{ .Values.containerPort }}
+        env:
+        - name: DATABASE_URL
+          value: "postgresql+psycopg2://todo:changeme@todo-db-postgresql:5432/todo-db"
         livenessProbe:
           httpGet:
             path: /health
