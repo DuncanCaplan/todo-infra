@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-deployment
+  labels:
+    app: todo-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-api
+  template:
+    metadata:
+      labels:
+        app: todo-api
+    spec:
+      containers:
+      - name: todo-api
+        image: 060476966476.dkr.ecr.eu-west-2.amazonaws.com/todo-api:e0a64f75803c99970ac58b658626c45b3263a3d2
+        ports:
+        - containerPort: 8000
