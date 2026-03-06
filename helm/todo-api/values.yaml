@@ -1,6 +1,6 @@
 replicas: 1
 image:
   repository: 060476966476.dkr.ecr.eu-west-2.amazonaws.com/todo-api
-  tag: e0a64f75803c99970ac58b658626c45b3263a3d2
+  tag: 9f6cfb6849839b1c00990fcb1b0362487861dbfa
 containerPort: 8000
 
