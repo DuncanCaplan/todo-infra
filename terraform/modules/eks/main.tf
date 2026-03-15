@@ -52,7 +52,32 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
 resource "aws_eks_cluster" "main" {
     name = "${var.cluster_name}"
     role_arn = aws_iam_role.control_plane.arn
+    
     vpc_config {
         subnet_ids = concat(var.public_subnets_ids, var.private_subnets_ids)
     }
+}
+
+data "tls_certificate" "eks" {
+  url = aws_eks_cluster.main.identity[0].oidc[0].issuer
+}
+
+resource "aws_eks_node_group" "node_group" {
+    cluster_name = aws_eks_cluster.main.name
+    node_role_arn = aws_iam_role.nodes.arn
+    subnet_ids = var.private_subnets_ids
+    instance_types = var.instance_types
+    capacity_type = var.capacity_type
+
+    scaling_config {
+        desired_size = var.scaling_config.desired_size
+        max_size = var.scaling_config.max_size
+        min_size = var.scaling_config.min_size
+    }
+}
+
+resource "aws_iam_openid_connect_provider" "default" {
+    url = aws_eks_cluster.main.identity[0].oidc[0].issuer
+    client_id_list = ["sts.amazonaws.com"]
+    thumbprint_list = [data.tls_certificate.eks.certificates[0].sha1_fingerprint]
 }
