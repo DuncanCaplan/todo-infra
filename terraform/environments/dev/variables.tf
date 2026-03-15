@@ -23,3 +23,28 @@ variable "availability_zones" {
     type = list(string)
     default = ["eu-west-2a", "eu-west-2b"]
 }
+
+variable "cluster_name" {
+    description = "The name of the EKS cluster"
+    type = string
+}
+
+variable "capacity_type" {
+    description = "Type of capacity for the node group"
+    type = string
+    default = "SPOT"
+}
+
+variable "instance_types" {
+    description = "Instance types for the nodes"
+    type = list(string)
+}
+
+variable "scaling_config" {
+    description = "Scaling configuration for the node group"
+    type = object ({
+        desired_size = number
+        min_size = number
+        max_size = number
+    })
+}
