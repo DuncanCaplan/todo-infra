@@ -1,10 +1,10 @@
-variable "vpc_cidr" {
-    description = "The CIDR block for the VPC"
+variable "env" {
+    description = "Name of the environment"
     type = string
 }
 
-variable "env" {
-    description = "Name of the environment"
+variable "vpc_cidr" {
+    description = "The CIDR block for the VPC"
     type = string
 }
 
@@ -21,5 +21,5 @@ variable "private_subnets" {
 variable "availability_zones" {
     description = "List of AZs for the subnets"
     type = list(string)
-    default = ["eu-west-2a", "eu-west-2b]
+    default = ["eu-west-2a", "eu-west-2b"]
 }
