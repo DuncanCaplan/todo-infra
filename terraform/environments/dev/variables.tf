@@ -1,10 +1,10 @@
-variable "vpc_cidr" {
-    description = "The CIDR block for the VPC"
+variable "env" {
+    description = "Name of the environment"
     type = string
 }
 
-variable "env" {
-    description = "Name of the environment"
+variable "vpc_cidr" {
+    description = "The CIDR block for the VPC"
     type = string
 }
 
