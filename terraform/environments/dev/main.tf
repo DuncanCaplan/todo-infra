@@ -18,3 +18,9 @@ module "eks" {
     instance_types = var.instance_types
     scaling_config = var.scaling_config
 }
+
+module "ecr" {
+    source = "../../modules/ecr"
+    env = var.env
+    repository_name = var.repository_name
+}
