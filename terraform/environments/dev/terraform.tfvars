@@ -19,3 +19,5 @@ scaling_config = {
     min_size = 1
     max_size = 2
 }
+
+repository_name = "todo-api"

@@ -48,3 +48,8 @@ variable "scaling_config" {
         max_size = number
     })
 }
+
+variable "repository_name" {
+    description = "Name of ECR repository"
+    type = string
+}
