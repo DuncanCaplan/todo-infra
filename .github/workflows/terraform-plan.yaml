@@ -1,11 +1,11 @@
-name: Terraform-plan CI
+name: Terraform-plan
 
 on:
     pull_request:
         branches: [main]
 jobs:
     terraform:
-        name: "Terraform Apply"
+        name: "Terraform Plan"
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -13,6 +13,9 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+
+            - name: tfsec
+              uses: aquasecurity/tfsec-action@v1.0.0
 
             - name: Configure AWS credentials
               uses: aws-actions/configure-aws-credentials@v4
@@ -30,3 +33,5 @@ jobs:
                 
             - name: Terraform plan
               run: terraform plan
+
+

@@ -1,4 +1,4 @@
-name: Terraform-apply CI
+name: Terraform-apply
 
 on:
     push:
