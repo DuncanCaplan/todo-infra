@@ -1,10 +1,10 @@
-name: Terraform-apply
+name: Terraform-destroy
 
 on: workflow_dispatch
 
 jobs:
     terraform:
-        name: "Terraform Apply"
+        name: "Terraform Destroy"
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -26,5 +26,5 @@ jobs:
             - name: Terraform init
               run: terraform init
 
-            - name: Terraform apply
-              run: terraform apply -auto-approve
+            - name: Terraform destroy
+              run: terraform destroy -auto-approve
